@@ -1,0 +1,425 @@
+/* Importando a fonte moderna */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --cor-primaria: #007bff; /* Azul Vibrante Principal */
+    --cor-secundaria: #f8f9fa; /* Fundo Suave */
+    --cor-texto: #333333;
+    --cor-fundo-claro: #ffffff;
+    --cor-acento: #0056b3; /* Azul mais escuro para hover */
+    --sombra-suave: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.main-content {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 30px;
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+/* ################ HEADER/MENU ################ */
+
+/* ################ HEADER/NAVBAR ################ */
+
+header {
+    width: 100%;
+    background-color: var(--cor-fundo-claro);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-container {
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-title {
+    font-size: 3em;
+    color: var(--cor-texto);
+    font-weight: 700;
+}
+
+.logo-accent {
+    color: var(--cor-primaria); /* Dá destaque ao TSINC */
+}
+
+/* Navbar de Links */
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--cor-texto);
+    font-weight: 600;
+    transition: color 0.2s;
+    padding: 5px 0;
+    position: relative;
+}
+
+.main-nav a:hover {
+    color: var(--cor-primaria);
+}
+
+/* Linha de destaque no hover */
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--cor-primaria);
+    transition: width 0.3s ease-in-out;
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+/* Banner da Marca (Abaixo da Navbar) */
+.header-banner {
+    background-color: var(--cor-primaria);
+    color: var(--cor-fundo-claro);
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px; /* Espaço para o corpo */
+}
+
+.header-banner p {
+    font-size: 1.1em;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+
+/* AJUSTES NO SOBRE NÓS */
+
+/* Remove a margem superior do Sobre Nós, pois agora o banner já dá espaço */
+#sobre-nos {
+    margin-bottom: 30px;
+    padding-top: 0; 
+}
+
+
+/* RESPONSIVIDADE PARA NAVBAR */
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .main-nav a::after {
+        display: none; /* Esconde a linha sublinhada no mobile */
+    }
+}
+
+/* ################ CATÁLOGO (MAIN) ################ */
+
+#catalogo-container {
+    flex-grow: 1; 
+    min-width: 65%; 
+}
+
+#catalogo-container h2 {
+    color: var(--cor-primaria);
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.instrucoes {
+    margin-bottom: 25px;
+    font-style: italic;
+    color: #6c757d;
+}
+
+.section-title {
+    color: var(--cor-texto);
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+/* Grid para os Cards de Serviços */
+.grid-servicos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.modern-card {
+    /* O label agora funciona como o card */
+    display: block;
+    background-color: var(--cor-fundo-claro);
+    border-radius: 10px;
+    padding: 20px;
+    border: 2px solid var(--cor-secundaria);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    cursor: pointer;
+    position: relative;
+    box-shadow: var(--sombra-suave);
+}
+
+.modern-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    border-color: var(--cor-primaria);
+}
+
+.modern-card input[type="checkbox"] {
+    position: absolute;
+    opacity: 0; /* Esconde o checkbox original */
+}
+
+/* Estilo do card quando selecionado */
+.modern-card input[type="checkbox"]:checked + .card-content {
+    background-color: var(--cor-secundaria); /* Fundo sutil */
+    border-radius: 8px;
+    outline: 2px solid var(--cor-primaria);
+}
+
+.modern-card input[type="checkbox"]:checked ~ .card-content::after {
+    content: '✓';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5em;
+    color: var(--cor-primaria);
+    font-weight: 700;
+}
+
+.card-content {
+    padding: 5px;
+    transition: background-color 0.2s;
+    position: relative;
+}
+
+.card-content h4 {
+    font-weight: 600;
+    color: var(--cor-acento);
+    margin-bottom: 5px;
+}
+
+.preco-tag {
+    display: inline-block;
+    background-color: var(--cor-primaria);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+
+/* ################ ORÇAMENTO (ASIDE) ################ */
+
+#orcamento {
+    width: 300px;
+    background-color: var(--cor-fundo-claro);
+    padding: 25px;
+    border-radius: 10px;
+    height: fit-content; 
+    position: sticky; 
+    top: 30px;
+    box-shadow: var(--sombra-suave);
+    border: 1px solid #e0e0e0;
+}
+
+.orcamento-title {
+    color: var(--cor-primaria);
+    font-size: 1.6em;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+#lista-orcamento {
+    min-height: 80px;
+    padding-bottom: 15px;
+}
+
+#lista-orcamento p {
+    font-size: 0.95em;
+    padding: 5px 0;
+    color: var(--cor-texto);
+    border-bottom: 1px dotted #ccc;
+}
+
+.placeholder-text {
+    font-style: italic;
+    color: #999 !important;
+    border-bottom: none !important;
+}
+
+.divider {
+    height: 1px;
+    background-color: #ddd;
+    margin: 15px 0;
+}
+
+.total-area {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--cor-acento);
+    margin-bottom: 25px;
+    text-align: right;
+}
+
+#finalizar-pedido {
+    /* Mantendo a cor oficial do WhatsApp, pois é um padrão de mercado */
+    background-color: #25d366; 
+    color: white;
+    width: 100%;
+    border: none;
+    padding: 14px;
+    border-radius: 50px; 
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+#finalizar-pedido:hover:not([disabled]) {
+    background-color: #128c7e;
+}
+
+#finalizar-pedido[disabled] {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* ################ RESPONSIVIDADE ################ */
+@media (max-width: 850px) {
+    
+    .main-content {
+        flex-direction: column; 
+        padding-top: 20px;
+    }
+
+    #catalogo-container {
+        min-width: 100%; 
+        order: 1; 
+    }
+
+    #orcamento {
+        width: 100%;
+        order: 2; 
+        position: static; 
+    }
+
+    .grid-servicos {
+        grid-template-columns: 1fr; /* Uma coluna no mobile */
+    }
+}
+/* ################ SEÇÃO SOBRE NÓS ################ */
+
+#sobre-nos {
+    width: 100%; /* Ocupa a largura total */
+    background-color: var(--cor-fundo-claro);
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: var(--sombra-suave);
+}
+
+#sobre-nos .section-title {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 25px;
+    color: var(--cor-acento);
+}
+
+.sobre-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.sobre-content > p {
+    font-size: 1.05em;
+    margin-bottom: 20px;
+    color: #555;
+    text-align: justify;
+}
+
+.missao-title {
+    font-size: 1.6em;
+    font-weight: 600;
+    color: var(--cor-primaria);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.proposta-lista {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 0;
+}
+
+.proposta-lista li {
+    background-color: var(--cor-secundaria);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 5px solid var(--cor-primaria);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.proposta-lista h4 {
+    color: var(--cor-texto);
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.proposta-lista p {
+    font-size: 0.95em;
+    color: #666;
+}
+
+.final-cta {
+    text-align: center;
+    font-weight: 600;
+    margin-top: 30px !important;
+    font-size: 1.1em !important;
+    color: var(--cor-acento) !important;
+}
+
+/* Ajuste de responsividade para a lista de propostas em telas menores */
+@media (max-width: 600px) {
+    .proposta-lista {
+        grid-template-columns: 1fr;
+    }
+}
