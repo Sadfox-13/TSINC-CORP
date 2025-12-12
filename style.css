@@ -55,6 +55,7 @@ header {
 }
 
 .logo-title {
+    cursor: pointer;
     font-size: 3em;
     color: var(--cor-texto);
     font-weight: 700;
